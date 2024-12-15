@@ -26,12 +26,28 @@
 
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import jaLocale from '@fullcalendar/core/locales/ja';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <FullCalendar plugins={[dayGridPlugin]} initialView="dayGridMonth" />
+      <FullCalendar 
+        plugins={[dayGridPlugin, timeGridPlugin]} 
+        initialView="dayGridMonth"
+        locales={[jaLocale]}         
+        locale='ja'              
+        headerToolbar={{                          
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek',
+        }}  
+        events={[
+          {title:'圭悟が死ぬ日', start: '2024-12-16'},
+          {title:'何もないです', start: '2024-12-17', end: '2024-12-20'}
+        ]}
+      />
     </div>
   );
 }
